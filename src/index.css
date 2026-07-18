@@ -1,0 +1,155 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-white: hsl(0 100% 100%);
+  --color-black: hsl(0 0% 0%);
+  --color-gray-900: hsl(249 10% 26%);
+  --color-gray-200: hsl(0 0% 87%);
+  --color-purple-700: hsl(248 32% 49%);
+  --color-purple-400: hsl(247 32% 72%);
+  --color-purple-350: hsl(246 25% 77%);
+  --color-green-400: hsl(154 59% 51%);
+  --color-green-light: hsl(154 65% 68%);
+  --color-green-300: hsl(154 65% 68%);
+  --color-red-400: hsl(0 100% 74%);
+
+  /* Gradient purple */
+  --color-purple-one: hsl(237 100% 64%);
+  --color-purple-two: hsl(322 87% 55%);
+
+  /* Typography */
+  --font-base: "Poppins", sans-serif;
+
+  --text-100: 0.6875rem;
+  --text-200: 0.9375rem;
+  --text-300: 1rem;
+  --text-400: 1.75rem;
+  --text-500: 3.125rem;
+
+  --leading-110: 1.1;
+  --leading-130: 1.3;
+  --leading-155: 1.55;
+  --leading-165: 1.65;
+  --leading-175: 1.75;
+  --leading-190: 1.9;
+
+  --tracking-0: 0rem;
+  --tracking-025: 0.0156rem;
+  --tracking-03: 0.0187rem;
+  --tracking-05: 0.0313rem;
+  --tracking-2: 0.125rem;
+
+  /* Spacing */
+  --spacing-0: 0;
+  --spacing-100: 0.5rem;
+  --spacing-200: 1rem;
+  --spacing-300: 1.5rem;
+  --spacing-400: 2rem;
+  --spacing-500: 2.5rem;
+  --spacing-600: 3rem;
+  --spacing-800: 4rem;
+
+  /* Breakpoints */
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+
+  --shadow-card: 0 8px 0 hsl(0 0% 0% / 0.15);
+  --shadow-inset: inset 0 -4px 0 hsl(0 0% 0% / 0.1);
+
+  --radius-10: 0.625rem;
+  --radius-5: 0.3125rem;
+}
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply font-base;
+  }
+
+  h1,
+  p {
+    @apply text-white;
+  }
+
+  input {
+    @apply w-full;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    @apply font-normal text-200 leading-175 tracking-025 text-gray-900 
+    border-[.0625rem] border-gray-200 rounded
+    px-300 py-200
+    md:px-400;
+  }
+
+  input[type="text"]::placeholder,
+  input[type="email"]::placeholder,
+  input[type="password"]::placeholder {
+    @apply text-gray-900 opacity-75;
+  }
+
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-text-fill-color: gray-900;
+    box-shadow: 0 0 0 1000px white inset;
+  }
+
+  input:-moz-autofill {
+    -moz-text-fill-color: gray-900;
+    box-shadow: 0 0 0 1000px white inset;
+  }
+}
+
+@layer components {
+  body {
+    @apply bg-[url('./assets/bg-sm.png')] bg-top-left bg-contain;
+  }
+
+  .page-shell {
+    @apply min-h-dvh w-full
+    px-300 py-800
+    md:p-800
+    lg:max-w-[80rem] lg:mx-auto lg:flex lg:items-center;
+  }
+
+  .hero {
+    @apply lg:grid lg:grid-cols-2 lg:gap-x-600 lg:items-center;
+  }
+
+  .hero__content {
+    @apply text-center 
+    flex flex-col gap-y-200
+    lg:text-start;
+  }
+
+  .hero__title {
+    @apply font-bold text-400 leading-130 -tracking-03 max-w-[18.75rem]
+    mx-auto
+    md:text-500 md:leading-110 md:max-w-[31.25rem]
+    lg:mx-0;
+  }
+
+  .hero__description {
+    @apply font-medium text-300 leading-165 tracking-0 max-w-[20.4375rem]
+    mx-auto
+    md:max-w-[31.25rem]
+    lg:mx-0;
+  }
+
+  .signup {
+    @apply mt-800
+    lg:mt-0;
+  }
+}

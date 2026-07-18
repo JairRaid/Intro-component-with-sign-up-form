@@ -1,0 +1,70 @@
+@reference "../index.css";
+
+@layer components {
+  .signup {
+    .signup__offer {
+      @apply font-normal text-200 leading-175 tracking-025 text-white bg-purple-700
+      text-center 
+      p-200 rounded-10 shadow-card;
+    }
+
+    .break {
+      @apply md:hidden;
+    }
+
+    .signup__form {
+      @apply bg-white shadow-card
+      mt-300 p-300 rounded-10
+      md:px-500 md:py-400;
+    }
+
+    .form-control {
+      @apply mt-200 relative
+      md:mt-300;
+    }
+
+    .signup__form > :first-child {
+      @apply mt-0;
+    }
+
+    .button--primary {
+      @apply font-semibold text-200 leading-175 tracking-2 text-white uppercase bg-green-400
+      inline-flex justify-center w-full rounded-5 shadow-inset
+      mt-200 px-400 py-200;
+    }
+
+    .signup__terms {
+      @apply font-medium text-100 leading-190 tracking-0 text-purple-350
+      inline-flex justify-center-safe flex-wrap w-full;
+    }
+
+    .signup__link {
+      @apply font-bold text-red-400;
+    }
+
+    .input-error {
+      @apply border-red-400;
+    }
+
+    .error-icon {
+      @apply absolute top-1/2 -translate-y-1/2 right-200;
+    }
+
+    .error-message {
+      @apply font-medium text-100 leading-155 italic text-end text-red-400
+      absolute right-0 bottom-0 translate-y-full
+      mt-100;
+    }
+
+    .isVisible {
+      @apply hidden;
+    }
+
+    .button--primary {
+      @apply transition-colors transition-transform duration-300
+      hover:translate-y-[-2px] hover:bg-green-light
+      active:translate-y-[-2px] active:bg-green-light
+      focus-visible:translate-y-[-2px] focus-visible:bg-green-light;
+    }
+  }
+}
