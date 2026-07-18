@@ -31,8 +31,8 @@ Your users should be able to:
 
 ### Links
 
-- Solution URL:
-- Live Site URL:
+- Solution URL: https://github.com/JairRaid/Intro-component-with-sign-up-form
+- Live Site URL: https://jairraid.github.io/Intro-component-with-sign-up-form/
 
 ## My process
 
