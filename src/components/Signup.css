@@ -61,7 +61,7 @@
     }
 
     .button--primary {
-      @apply transition-colors transition-transform duration-300
+      @apply transition duration-300
       hover:translate-y-[-2px] hover:bg-green-light
       active:translate-y-[-2px] active:bg-green-light
       focus-visible:translate-y-[-2px] focus-visible:bg-green-light;
