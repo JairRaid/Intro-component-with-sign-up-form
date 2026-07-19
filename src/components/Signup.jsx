@@ -1,69 +1,23 @@
 import errorIcon from "../assets/error-icon.svg";
-import React, { useState } from "react";
 import "./Signup.css";
-import { toast } from "react-toastify";
+import useFormValidation from "../hooks/useFormValidation";
 
 const Signup = () => {
-  const [enteredValue, setEnteredValue] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-  });
-
-  const [errors, setErrors] = useState({
-    firstName: false,
-    lastName: false,
-    email: false,
-    password: false,
-  });
-
-  const handleInputChange = (field, value) => {
-    setEnteredValue((prev) => ({ ...prev, [field]: value }));
-  };
-
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    if (handleErrors()) return; // if true then hasError then return
-    setErrors((prev) =>
-      Object.fromEntries(Object.keys(prev).map((key) => [key, false])),
+  const { enteredValue, errors, handleChange, handleSubmit } =
+    useFormValidation(
+      {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+      },
+      {
+        firstName: false,
+        lastName: false,
+        email: false,
+        password: false,
+      },
     );
-
-    setEnteredValue({
-      firstName: "",
-      lastName: "",
-      email: "",
-      password: "",
-    });
-
-    toast.success("Form submitted successfully!");
-  };
-
-  const handleErrors = () => {
-    const { firstName, lastName, email, password } = enteredValue;
-    const tempErrors = {
-      firstName: false,
-      lastName: false,
-      email: false,
-      password: false,
-    };
-
-    tempErrors.firstName = firstName.trim() === "";
-    tempErrors.lastName = lastName.trim() === "";
-    tempErrors.email = email.trim() === "" || !validateEmail(email);
-    tempErrors.password = password.trim() === "";
-
-    setErrors(tempErrors);
-
-    const hasError = Object.values(tempErrors).some(Boolean);
-
-    return hasError;
-  };
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email.trim());
-  };
 
   return (
     <div className="signup">
@@ -85,7 +39,7 @@ const Signup = () => {
             autoComplete="given-name"
             placeholder="First Name"
             value={enteredValue.firstName}
-            onChange={(e) => handleInputChange("firstName", e.target.value)}
+            onChange={(e) => handleChange("firstName", e.target.value)}
           />
           <span className={`error-icon ${errors.firstName ? "" : "isVisible"}`}>
             <img src={errorIcon} alt="" />
@@ -107,7 +61,7 @@ const Signup = () => {
             autoComplete="family-name"
             placeholder="Last Name"
             value={enteredValue.lastName}
-            onChange={(e) => handleInputChange("lastName", e.target.value)}
+            onChange={(e) => handleChange("lastName", e.target.value)}
           />
           <span className={`error-icon ${errors.lastName ? "" : "isVisible"}`}>
             <img src={errorIcon} alt="" />
@@ -129,7 +83,7 @@ const Signup = () => {
             autoComplete="email"
             placeholder="Email Address"
             value={enteredValue.email}
-            onChange={(e) => handleInputChange("email", e.target.value)}
+            onChange={(e) => handleChange("email", e.target.value)}
           />
           <span className={`error-icon ${errors.email ? "" : "isVisible"}`}>
             <img src={errorIcon} alt="" />
@@ -151,7 +105,7 @@ const Signup = () => {
             autoComplete="new-password"
             placeholder="Password"
             value={enteredValue.password}
-            onChange={(e) => handleInputChange("password", e.target.value)}
+            onChange={(e) => handleChange("password", e.target.value)}
           />
           <span className={`error-icon ${errors.password ? "" : "isVisible"}`}>
             <img src={errorIcon} alt="" />
